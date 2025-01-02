@@ -39,3 +39,5 @@ class Student:
 
 students = Student("Alice", 9, 18)
 print(students)
+my_dict = {"Alice": ['m',7], "Bob": ['f', 8], "Charlie": ['f', 9]}
+print(sorted(my_dict.items(), key=lambda x: x[1][1]))
