@@ -100,6 +100,22 @@ class Sort():
         arr[k], arr[right] = arr[right], arr[k]
         return k
 
+    def adjust_heap(self, i, n):
+        '''
+        将堆调整大根堆
+        :param i: 堆的根节点
+        :param n: 堆的大小
+        :return:
+        '''
+
+
+    def heap_sort(self):
+        '''
+        堆排序算法
+        :return:
+        '''
+
+        pass
 
 if __name__ == '__main__':
     my_sort = Sort(10)
