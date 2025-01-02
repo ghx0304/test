@@ -4,7 +4,7 @@
 # @Fire : 2排序.py
 # @Software : PyCharm
 import random
-
+import time
 
 # my_dict = {'name': 'wangdao', 'age': 25, 'gender': 'male'}
 # print(my_dict)
@@ -48,7 +48,7 @@ class Sort():
 
     def random_data(self):
         for i in range(self.len):
-            self.arr[i] = random.randint(0, 99)
+            self.arr[i] = random.randint(0, 100000)
 
     def qiuck_sort(self, left, right):
         '''
@@ -100,30 +100,72 @@ class Sort():
         arr[k], arr[right] = arr[right], arr[k]
         return k
 
-    def adjust_heap(self, i, n):
+    def adjust_heap(self, pos, arr_len):
         '''
         将堆调整大根堆
-        :param i: 堆的根节点
+        :param pos: 堆的根节点
         :param n: 堆的大小
         :return:
         '''
-
+        arr = self.arr
+        dad = pos
+        son = 2 * dad + 1
+        while son < arr_len:#左孩子小于列表长度
+            if son + 1 < arr_len and arr[son] < arr[son + 1]:  # 判断右孩子存在且大于左孩子
+                son += 1
+            if arr[dad] < arr[son]:  # 父节点小于子节点，则交换
+                arr[dad], arr[son] = arr[son], arr[dad]
+                dad = son
+                son = 2 * dad + 1
+            else:
+                break
 
     def heap_sort(self):
         '''
-        堆排序算法
+        把堆调整成大根堆，然后依次取出堆顶元素，放入排序列表
         :return:
         '''
 
-        pass
+        for i in range(self.len // 2 - 1, -1, -1):
+            self.adjust_heap(i, self.len)
+            #print(self.arr)
+        for i in range(self.len - 1, 0, -1):
+            self.arr[0], self.arr[i] = self.arr[i], self.arr[0]#把堆顶元素放到最后，然后调整堆
+            self.adjust_heap(0, i)
+
+    def test_time_use(self,sort_func,*args,**kwargs):
+        '''
+        测试排序算法的时间复杂度
+        回调函数
+        :param sort_func:
+        :return:
+        '''
+        start_time = time.time()
+        sort_func(*args,**kwargs)
+        end_time = time.time()
+        print('用时：', end_time - start_time)
+
+
 
 if __name__ == '__main__':
-    my_sort = Sort(10)
-    print(my_sort.arr)
-    my_sort.qiuck_sort(0, 9)
-    print(my_sort.arr)
-    my_sort2 = Sort(10)
-    print(my_sort2.arr)
-    my_sort2.qiuck_sort2(0, 9)
-    print(my_sort2.arr)
-
+    count = 1000
+    #start_time = time.time()
+    #my_sort = Sort(count)
+    #print(my_sort.arr)
+    #my_sort.qiuck_sort(0, count - 1)
+    #print(my_sort.arr)
+    #end_time = time.time()
+    #print('用时：', end_time - start_time)
+   # my_sort2 = Sort(10)
+    #print(my_sort2.arr)
+    #my_sort2.qiuck_sort2(0, 9)
+    #print(my_sort2.arr)
+    my_sort3 = Sort(count)
+    #start_time = time.time()
+    #print(my_sort3.arr)
+    #my_sort3.heap_sort()
+    #print(my_sort3.arr)
+    #end_time = time.time()
+    #print('用时：', end_time - start_time)
+    my_sort3.test_time_use(my_sort3.heap_sort)
+    my_sort3.test_time_use(my_sort3.qiuck_sort2,0,count-1)
