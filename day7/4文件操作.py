@@ -3,6 +3,7 @@
 # @Author : guohexing
 # @Fire : 4文件操作.py
 # @Software : PyCharm
+import os
 def open_r():
     """
     打开文件并读取内容
@@ -25,6 +26,7 @@ def open_w():
     file = open("file3.txt", mode="w+", encoding="utf-8")
     file.write("hello world")
     print(file.read())
+
     file.close()
 
 
@@ -68,7 +70,7 @@ def use_seek():
 
 
 if __name__ == '__main__':
-    # open_r()
-    # open_w()
+    #open_r()
+    open_w()
     #use_readlines()
-    use_seek()
+    #use_seek()

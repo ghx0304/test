@@ -8,6 +8,10 @@ import os
 
 # 定位到文件开头
 def seek_start():
+    '''
+    定位到文件开头，读取文件内容
+    :return:
+    '''
     file = open("file.txt", "r+", encoding="utf-8")
     file.seek(5, os.SEEK_SET)
     text = file.read()
@@ -16,6 +20,10 @@ def seek_start():
 
 
 def seek_end():
+    '''
+    定位到文件结尾，读取文件内容
+    :return:
+    '''
     file = open("file.txt", "r+", encoding="utf-8")
     file.seek(0, os.SEEK_END)
     text = file.read()
@@ -24,6 +32,10 @@ def seek_end():
 
 
 def seek_current():
+    '''
+    定位到当前位置，读取文件内容
+    :return:
+    '''
     file = open("file.txt", "r+", encoding="utf-8")
     file.seek(0, os.SEEK_CUR)
     text = file.read()

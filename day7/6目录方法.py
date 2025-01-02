@@ -8,10 +8,18 @@ from time import strftime
 from time import gmtime
 
 def use_rename():
+    '''
+    重命名文件
+    :return:
+    '''
     os.rename('file3.txt', 'file4.txt')
 
 
 def use_dir_func():
+    '''
+    获取当前目录下的文件列表
+    :return:
+    '''
     file_list = os.listdir('.')
     print(file_list)
     print(os.getcwd())
@@ -45,3 +53,5 @@ if __name__ == '__main__':
     # use_dir_func()
     #scan_dir(0, '.')
     use_stat('file.txt')
+    #os.listdir('.')
+    #os.path.isdir('.')
