@@ -68,7 +68,7 @@ class Sort():
         快速排序算法
         :param left: 最左边的索引
         :param right: 最右边的索引
-        :return:
+        :return:S
         '''
         if left >= right:
             return
@@ -102,7 +102,7 @@ class Sort():
 
     def adjust_heap(self, pos, arr_len):
         '''
-        将堆调整大根堆
+        将数列堆调整大根堆
         :param pos: 堆的根节点
         :param n: 堆的大小
         :return:
